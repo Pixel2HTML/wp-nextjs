@@ -1,6 +1,7 @@
 import React from 'react'
 import fetch from 'isomorphic-fetch'
 import Link from 'next/link'
+import Post from '../components/Post'
 
 export default class extends React.Component {
   static async getInitialProps() {
@@ -11,17 +12,11 @@ export default class extends React.Component {
   render(){
     return(
       <div>
-      <ul>
         {
-           this.props.posts.map( (post, i) => (
-             <li key={i}>
-              <Link href={post.link}>
-                {post.title.rendered}
-              </Link>
-             </li>
-           ))
+          this.props.posts.map( (post, i) => (
+            <Post id={post.id} title={post.title.rendered} link={post.link} excerpt={post.excerpt.rendered} />
+          ))
         }
-      </ul>
       </div>
     )
   }
