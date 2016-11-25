@@ -2,6 +2,11 @@
   "name": "wp-nextjs",
   "version": "0.0.1",
   "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "start": "next start",
+    "build": "next build"
+  },
   "license": "MIT",
   "dependencies": {
     "next": "^1.1.2"
