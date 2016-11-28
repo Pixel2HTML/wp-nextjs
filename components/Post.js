@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Header from '../components/Header'
 
 export default ({ id, title, link, excerpt }) => (
-  <div>
+  <div className="wrap">
     <h1>
       <Link href={`/post?id=${id}`}>{ title }</Link>
     </h1>
