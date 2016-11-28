@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 
 export default ({ id, title, link, excerpt }) => (
-  <div>
+  <div className="wrap">
     <h1>
       <Link href={link}>{title}</Link>
     </h1>

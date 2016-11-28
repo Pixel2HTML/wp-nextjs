@@ -12,10 +12,10 @@ export default class extends React.Component {
   render () {
     return (
       <div>
-        <Header />
+        <Header title="My Awesome Pixel Blog"/>
         {
-          this.props.posts.map((post, i) => (
-            <Post id={post.id} title={post.title.rendered} link={post.link} excerpt={post.excerpt.rendered} />
+          this.props.posts.map((post) => (
+            <Post key={post.id} title={post.title.rendered} link={post.link} excerpt={post.excerpt.rendered} />
           ))
         }
       </div>
