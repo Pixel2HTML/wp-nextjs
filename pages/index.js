@@ -19,7 +19,7 @@ export default class extends React.Component {
         <Header title="My Awesome Pixel Blog"/>
         {
           this.props.posts.map((post) => (
-            <Post key={post.id} title={post.title.rendered} link={post.link} excerpt={post.excerpt.rendered} />
+            <Post key={post.id} id={post.id} title={post.title.rendered} link={post.link} excerpt={post.excerpt.rendered} />
           ))
         }
       </div>
