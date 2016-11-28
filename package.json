@@ -10,6 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "isomorphic-fetch": "^2.2.1",
+    "loadash": "^0.0.1",
     "next": "^1.1.2"
   }
 }
