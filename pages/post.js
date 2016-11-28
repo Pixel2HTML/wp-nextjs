@@ -2,6 +2,7 @@ import React from 'react'
 import fetch from 'isomorphic-fetch'
 import Link from 'next/link'
 import Post from '../components/Post'
+import Header from '../components/Header'
 import * as  _ from 'lodash'
 
 const baseURL = 'http://wp.pixel2html.com/examples/nextjs/'
@@ -23,9 +24,8 @@ export default class extends React.Component {
 
     return(
       <div>
-        {
-          <Post key={post.id} id={post.id} title={post.title.rendered} link={post.link} excerpt={post.excerpt.rendered} />
-        }
+        <Header />
+        <Post key={post.id} id={post.id} title={post.title.rendered} link={post.link} excerpt={post.excerpt.rendered} />
       </div>
     )
   }
