@@ -5,5 +5,6 @@ export default ({title}) => (
   <Head>
     <title>{title}</title>
     <link href='/static/twentyseventeen.css' rel='stylesheet' />
+    <link href='/static/twentyNext.css' rel='stylesheet' />
   </Head>
 )

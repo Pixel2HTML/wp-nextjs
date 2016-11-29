@@ -1,0 +1,33 @@
+/*--------------------------------------------------------------
+13.1 Header
+--------------------------------------------------------------*/
+.o-header.has-header-image .site-title,
+.o-header.has-header-image .site-title a {
+	color: #fff;
+}
+
+.o-header.has-header-image .site-description {
+	color: #fff;
+	opacity: 0.8;
+}
+
+.o-header.home.title-tagline-hidden.has-header-image .custom-logo-link img {
+	max-height: 200px;
+	max-width: 100%;
+}
+
+.o-header:not(.title-tagline-hidden) .site-branding-text {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+/* Hides div in Customizer preview when header images or videos change. */
+
+body:not(.has-header-image) .custom-header-image {
+	display: block;
+}
+
+.twentyseventeen-front-page.has-header-image .site-branding,
+.home.blog.has-header-image .site-branding {
+	margin-bottom: 0;
+}
