@@ -1,15 +1,13 @@
 import React from 'react'
 import fetch from 'isomorphic-fetch'
-import Link from 'next/link'
 import Post from '../components/Post'
-import Header from '../components/Header'
-import * as  _ from 'lodash'
+import Head from '../components/Head'
 
 const baseURL = 'http://wp.pixel2html.com/examples/nextjs/'
 const APIendpoint = 'wp-json/wp/v2/'
 
 export default class extends React.Component {
-  static async getInitialProps ({query: { id  }}) {
+  static async getInitialProps ({query: { id }}) {
     const res = await fetch(baseURL + APIendpoint + 'posts/' + id)
     const post = await res.json()
 
@@ -23,7 +21,7 @@ export default class extends React.Component {
 
     return (
       <div>
-        <Header />
+        <Head title={post.title.rendered} />
         <Post
           key={post.id}
           id={post.id}

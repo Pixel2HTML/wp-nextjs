@@ -8,8 +8,6 @@ export default () => (
           <div id='wp-custom-header' className='wp-custom-header'>
             <img
               src='/static/header.jpg'
-              width='2000'
-              height='1200'
               alt='Project react~nextjs' />
           </div>
         </div>

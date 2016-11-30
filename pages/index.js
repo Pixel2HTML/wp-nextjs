@@ -1,6 +1,6 @@
 import React from 'react'
 import fetch from 'isomorphic-fetch'
-import Header from '../components/Header'
+import Head from '../components/Head'
 import Post from '../components/Post'
 import Hero from '../components/Hero'
 const baseURL = 'http://wp.pixel2html.com/examples/nextjs/'
@@ -16,7 +16,7 @@ export default class extends React.Component {
   render () {
     return (
       <div>
-        <Header title='My Awesome Pixel Blog' />
+        <Head title='My Awesome Pixel Blog' />
         <Hero />
         <div className='site-content-contain'>
           {this.props.posts.map((post) => (
