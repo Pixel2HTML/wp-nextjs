@@ -10,12 +10,11 @@ export default class extends React.Component {
   static async getInitialProps ({query: { id }}) {
     const res = await fetch(baseURL + APIendpoint + 'posts/' + id)
     const post = await res.json()
-
     return {
       post: post
-
     }
   }
+
   render () {
     const post = this.props.post
 

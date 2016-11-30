@@ -12,6 +12,7 @@
     "babel-eslint": "^7.1.1",
     "isomorphic-fetch": "^2.2.1",
     "next": "^1.1.2",
+    "react-scroll": "^1.4.4",
     "standard": "^8.6.0"
   },
   "standard": {

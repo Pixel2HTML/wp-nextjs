@@ -6,6 +6,8 @@ import Hero from '../components/Hero'
 const baseURL = 'http://wp.pixel2html.com/examples/nextjs/'
 const APIendpoint = 'wp-json/wp/v2/'
 
+// Todo: add smooth scrollinggggg
+
 export default class extends React.Component {
   static async getInitialProps () {
     const res = await fetch(baseURL + APIendpoint + 'posts')
@@ -17,7 +19,8 @@ export default class extends React.Component {
     return (
       <div>
         <Head title='My Awesome Pixel Blog' />
-        <Hero />
+
+        <Hero hasimage frontPage />
         <div className='site-content-contain'>
           {this.props.posts.map((post) => (
             <Post
