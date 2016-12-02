@@ -19,6 +19,7 @@ export default class Hero extends React.Component {
                     id={post.id}
                     title={post.title.rendered}
                     link={post.link}
+                    time={post.date}
                     excerpt={post.excerpt.rendered} />
                  ))}
               </main>
