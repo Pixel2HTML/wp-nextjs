@@ -7,7 +7,7 @@ class Search extends React.Component {
     return (
       <section id='search-2' className='widget widget_search'>
         <form role='search' method='get' className='search-form' action='http://wp.pixel2html.com/examples/nextjs/'>
-          <label for='search-form-5841a9161283e'>
+          <label htmlFor='search-form-5841a9161283e'>
             <span className='screen-reader-text'>Search for:</span>
           </label>
           <input type='search' id='search-form-5841a9161283e' className='search-field' placeholder='Search …' value='' name='s' />

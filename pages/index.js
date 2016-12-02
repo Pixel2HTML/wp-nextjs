@@ -18,17 +18,21 @@ export default class extends React.Component {
     return {
       title: data.name,
       description: data.description,
-      posts: posts
+      posts: posts,
+      recentPosts: posts.slice(0, 5)
     }
   }
   render () {
-    console.log(this.props.res)
     return (
       <div>
         <Head title={this.props.title} />
         <Hero title={this.props.title} description={this.props.description} hasimage frontPage />
         <div className='blog has-sidebar'>
-          <Main posts={this.props.posts} hasSidebar />
+          <Main
+            posts={this.props.posts}
+            hasSidebar
+            recentPosts={this.props.recentPosts}
+          />
         </div>
       </div>
     )

@@ -19,7 +19,7 @@ export default class Main extends React.Component {
               <Posts posts={this.props.posts} />
             </div>
             <aside id='secondary' className='widget-area' role='complementary'>
-              <Sidebar />
+              <Sidebar recentPosts={this.props.recentPosts} />
             </aside>
           </div>
         </div>
