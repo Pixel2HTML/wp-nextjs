@@ -11,14 +11,15 @@ export default class Post extends React.Component {
         <header className='entry-header'>
           <div className='entry-meta'>
             <span className='screen-reader-text'>Posted on</span>
-            <a>
-              <time className='entry-date'>{now}</time>
-            </a>
+            <a rel='bookmark'><time className='entry-date'>{now}</time></a>
           </div>
-          <h1><Link href={`/post?id=${this.props.id}`}>{this.props.title}</Link></h1>
+          <h2 className='entry-title'>
+            <Link href={`/post?id=${this.props.id}`} rel='bookmark'>{this.props.title}</Link>
+          </h2>
         </header>
         <div dangerouslySetInnerHTML={{__html: this.props.excerpt}} />
       </article>
     )
   }
 }
+

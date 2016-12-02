@@ -22,10 +22,8 @@ export default class Hero extends React.Component {
             <div className='site-branding'>
               <div className='wrap'>
                 <div className='site-branding-text'>
-                  <h1 className='site-title'><a href='/' rel='home'>Project react~nextjs</a></h1>
-                  <p className='site-description'>
-                    Just another Pixel2HTML site
-                  </p>
+                  <h1 className='site-title'><a href='/' rel='home'>{this.props.title}</a></h1>
+                  <p className='site-description'>{this.props.description}</p>
                 </div>
                 <a href='#content' className='menu-scroll-down'>
                   <svg
