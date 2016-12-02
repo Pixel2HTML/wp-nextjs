@@ -1,11 +1,11 @@
 import React from 'react'
+import Search from './Search'
 
 class Sidebar extends React.Component {
   render () {
     return (
       <div>
-        <h1>Sidebar works!!</h1>
-        <p>Lorem ipsum dolor sit amet blah blah blah blah</p>
+        <Search />
       </div>
     )
   }
