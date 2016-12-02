@@ -27,8 +27,8 @@ export default class extends React.Component {
       <div>
         <Head title={this.props.title} />
         <Hero title={this.props.title} description={this.props.description} hasimage frontPage />
-        <div className='blog'>
-          <Main posts={this.props.posts} />
+        <div className='blog has-sidebar'>
+          <Main posts={this.props.posts} hasSidebar />
         </div>
       </div>
     )

@@ -31,3 +31,16 @@ body:not(.has-header-image) .custom-header-image {
 .home.blog.has-header-image .site-branding {
 	margin-bottom: 0;
 }
+
+
+/*--------------------------------------------------------------
+Main Content Area
+--------------------------------------------------------------*/
+body:not(.has-sidebar):not(.page-one-column) .page-header,
+body.has-sidebar.error404 #primary .page-header,
+body.page-two-column:not(.archive) #primary .entry-header,
+body.page-two-column.archive:not(.has-sidebar) #primary .page-header {
+  float: initial;
+  width: initial;
+}
+
