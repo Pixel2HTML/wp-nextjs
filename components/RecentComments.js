@@ -20,8 +20,7 @@ class RecentComments extends React.Component {
       const res2 = await fetch(baseURL + APIendpoint + 'posts/' + comment.post)
       const post = await res2.json()
       comment.post_name = post.title.rendered
-      this.state.comments.push(comment)
-      this.setState({comments})
+      this.setState(oldState => oldState.comments.push(comment))
     })
   }
 
