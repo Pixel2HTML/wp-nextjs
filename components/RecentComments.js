@@ -12,17 +12,21 @@ class RecentComments extends React.Component {
     }
   }
 
-  async componentDidMount () {
-    const res = await fetch(baseURL + APIendpoint + 'comments')
-    let comments = await res.json()
-
-    comments.forEach(async comment => {
-      let postID = comment.post
-      let res = await fetch(baseURL + APIendpoint + 'posts/' + postID)
-      let post = await res.json()
-      comment.post_name = post.title.rendered
+  componentDidMount () {
+    fetch(baseURL + APIendpoint + 'comments').then(data => {
+      data.json().then(response => {
+        let comments = response.slice(0, 5)
+        comments.forEach(comment => {
+          fetch(baseURL + APIendpoint + 'posts/' + comment.post).then(dat => {
+            dat.json().then(post => {
+              comment.post_name = post.title.rendered
+              this.state.comments.push(comment)
+              this.setState({comments: comments})
+            })
+          })
+        })
+      })
     })
-    await this.setState({comments: comments.slice(0, 5)})
   }
 
   render () {
