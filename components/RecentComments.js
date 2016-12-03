@@ -13,13 +13,20 @@ class RecentComments extends React.Component {
   }
 
   async componentDidMount () {
+    // Get an array of comments
     const res = await fetch(baseURL + APIendpoint + 'comments')
     const data = await res.json()
+    // We just need the first 5 comments
     const comments = data.slice(0, 5)
+    // Now we need to match each comment post id with its post to get the post title and
+    // use it in our render function
     comments.forEach(async comment => {
       const res2 = await fetch(baseURL + APIendpoint + 'posts/' + comment.post)
       const post = await res2.json()
+      // Here's where I'm adding a new property to the comment with the data i need
+      // in my actual view
       comment.post_name = post.title.rendered
+      // and finally i change the state to reflect the updated comment with its new property
       this.setState(oldState => oldState.comments.push(comment))
     })
   }
