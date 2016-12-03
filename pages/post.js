@@ -18,7 +18,6 @@ export default class extends React.Component {
 
   render () {
     const post = this.props.post
-
     return (
       <div>
         <Head title={post.title.rendered} />
@@ -32,7 +31,6 @@ export default class extends React.Component {
             excerpt={post.excerpt.rendered} />
         </div>
       </div>
-
     )
   }
 
