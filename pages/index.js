@@ -16,16 +16,12 @@ export default class extends React.Component {
     // GET Name and Blog Description
     const res2 = await fetch(baseURL + 'wp-json')
     const data = await res2.json()
-    // GET Recent Comments
-    const res3 = await fetch(baseURL + APIendpoint + 'comments')
-    const comments = await res3.json()
 
     return {
       title: data.name,
       description: data.description,
       posts: posts,
-      recentPosts: posts.slice(0, 5),
-      recentComments: comments.slice(0, 5)
+      recentPosts: posts.slice(0, 5)
     }
   }
   render () {
@@ -38,7 +34,6 @@ export default class extends React.Component {
             posts={this.props.posts}
             hasSidebar
             recentPosts={this.props.recentPosts}
-            recentComments={this.props.recentComments}
           />
         </div>
       </div>

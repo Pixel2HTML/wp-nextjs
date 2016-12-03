@@ -21,7 +21,6 @@ export default class Main extends React.Component {
             <aside id='secondary' className='widget-area' role='complementary'>
               <Sidebar
                 recentPosts={this.props.recentPosts}
-                recentComments={this.props.recentComments}
               />
             </aside>
           </div>

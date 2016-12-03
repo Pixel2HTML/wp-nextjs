@@ -9,9 +9,7 @@ class Sidebar extends React.Component {
       <div>
         <Search />
         <Recents recentPosts={this.props.recentPosts} />
-        <RecentComments
-          recentComments={this.props.recentComments}
-        />
+        <RecentComments />
       </div>
     )
   }
