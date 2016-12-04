@@ -16,7 +16,7 @@ export default class Main extends React.Component {
               <h2 className='page-title'>Posts</h2>
             </header>
             <div id='primary' className='content-area'>
-              <Posts posts={this.props.posts} />
+              <Posts />
             </div>
             <aside id='secondary' className='widget-area' role='complementary'>
               <Sidebar

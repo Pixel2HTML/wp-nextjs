@@ -20,7 +20,6 @@ export default class extends React.Component {
     return {
       title: data.name,
       description: data.description,
-      posts: posts,
       recentPosts: posts.slice(0, 5)
     }
   }
@@ -31,7 +30,6 @@ export default class extends React.Component {
         <Hero title={this.props.title} description={this.props.description} hasimage frontPage />
         <div className='blog has-sidebar'>
           <Main
-            posts={this.props.posts}
             hasSidebar
             recentPosts={this.props.recentPosts}
           />
