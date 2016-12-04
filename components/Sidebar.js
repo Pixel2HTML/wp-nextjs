@@ -8,7 +8,7 @@ class Sidebar extends React.Component {
     return (
       <div>
         <Search />
-        <Recents recentPosts={this.props.recentPosts} />
+        <Recents />
         <RecentComments />
       </div>
     )
