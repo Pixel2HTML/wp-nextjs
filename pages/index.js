@@ -5,6 +5,7 @@ import Hero from '../components/Hero'
 import Main from '../components/Main'
 const baseURL = 'http://wp.pixel2html.com/examples/nextjs/'
 
+import wp from '../wp'
 // Todo: add smooth scrollinggggg
 
 export default class extends React.Component {
@@ -12,13 +13,13 @@ export default class extends React.Component {
     // GET Name and Blog Description
     const res2 = await fetch(baseURL + 'wp-json')
     const data = await res2.json()
-
     return {
       title: data.name,
       description: data.description
     }
   }
   render () {
+    console.log(wp)
     return (
       <div>
         <Head title={this.props.title} />
