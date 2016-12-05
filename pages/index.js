@@ -4,6 +4,7 @@ import Head from '../components/Head'
 import Hero from '../components/Hero'
 import Main from '../components/Main'
 import config from '../config'
+import wp from '../wp'
 
 // Todo: add smooth scrollinggggg
 
@@ -18,6 +19,7 @@ export default class extends React.Component {
     }
   }
   render () {
+    wp.posts().get().then(posts => { console.log(posts) })
     return (
       <div>
         <Head title={this.props.title} />
