@@ -5,7 +5,7 @@ const moment = require('moment')
 export default class Post extends React.Component {
 
   render () {
-    let now = moment(this.props.time).format('MMMM d, YYYY')
+    let now = moment(this.props.time).format('LL')
     return (
       <article id={this.props.id} className='post'>
         <header className='entry-header'>
