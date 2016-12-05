@@ -19,7 +19,7 @@ export default class Posts extends React.Component {
 
   render () {
     return (
-      <main>
+      <main id='main' className='site-main' role='main'>
         {this.state.posts.map((post) => (
           <Post
             key={post.id}
@@ -27,7 +27,8 @@ export default class Posts extends React.Component {
             title={post.title.rendered}
             link={post.link}
             time={post.date}
-            excerpt={post.excerpt.rendered} />
+            excerpt={post.excerpt.rendered}
+          />
         ))}
       </main>
     )
