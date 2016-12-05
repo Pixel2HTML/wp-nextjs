@@ -1,6 +1,7 @@
 'use strict'
 import React from 'react'
 import Fetch from 'isomorphic-fetch'
+import Spinner from './Spinner'
 
 const baseURL = 'http://wp.pixel2html.com/examples/nextjs/wp-json/wp/v2/'
 
@@ -47,7 +48,7 @@ class CommentsWidget extends React.Component {
       <section id='recent-comments-2' className='widget widget_recent_comments'>
         <h2 className='widget-title'>Recent Comments</h2>
         <ul id='recentcomments'>
-          {comments.length ? this.renderComments(comments) : 'Loading...'}
+          {comments.length ? this.renderComments(comments) : <Spinner />}
         </ul>
       </section>
     )
