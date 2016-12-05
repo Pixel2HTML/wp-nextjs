@@ -10,6 +10,7 @@ class CommentsWidget extends React.Component {
     this.state = {
       comments: []
     }
+    this.fetchPostForComment = this.fetchPostForComment.bind(this)
   }
 
   async fetchFromAPI (path) {
@@ -19,12 +20,14 @@ class CommentsWidget extends React.Component {
 
   async fetchPostForComment (comment) {
     let post = await this.fetchFromAPI('posts/' + comment.post)
-    console.log(post)
+    comment.post_name = post.title.rendered
+    return comment
   }
 
   async componentDidMount () {
     const comments = await this.fetchFromAPI('comments')
-    comments.slice(0,5).map(this.fetchPostForComment)
+    Promise.all(comments.slice(0, 5).map(await this.fetchPostForComment))
+      .then(comments => { this.setState({comments}) })
   }
 
   render () {
