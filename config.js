@@ -1,5 +1,5 @@
 'use strict'
 
 export default {
-  endpoint: 'http://wp.pixel2html.com/examples/nextjs/wp-json/'
+  endpoint: 'http://examples.pixel2html.com/nextjs/wp-json'
 }
