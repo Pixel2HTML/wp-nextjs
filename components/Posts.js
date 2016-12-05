@@ -1,6 +1,7 @@
 import React from 'react'
 import Post from './Post'
 import Fetch from 'isomorphic-fetch'
+import Spinner from './Spinner'
 
 export default class Posts extends React.Component {
 
@@ -9,6 +10,7 @@ export default class Posts extends React.Component {
     this.state = {
       posts: []
     }
+    this.renderPosts = this.renderPosts.bind(this)
   }
 
   async componentDidMount () {
@@ -17,19 +19,24 @@ export default class Posts extends React.Component {
     this.setState({posts})
   }
 
+  renderPosts (posts) {
+    return posts.map(post => (
+      <Post
+        key={post.id}
+        id={post.id}
+        title={post.title.rendered}
+        link={post.link}
+        time={post.date}
+        excerpt={post.excerpt.rendered}
+      />
+    ))
+  }
+
   render () {
+    let posts = this.state.posts
     return (
       <main id='main' className='site-main' role='main'>
-        {this.state.posts.map((post) => (
-          <Post
-            key={post.id}
-            id={post.id}
-            title={post.title.rendered}
-            link={post.link}
-            time={post.date}
-            excerpt={post.excerpt.rendered}
-          />
-        ))}
+        {posts.length ? this.renderPosts(posts) : <Spinner />}
       </main>
     )
   }

@@ -1,6 +1,7 @@
 'use strict'
 import React from 'react'
 import Fetch from 'isomorphic-fetch'
+import Spinner from './Spinner'
 
 const baseURL = 'http://wp.pixel2html.com/examples/nextjs/wp-json/wp/v2/'
 
@@ -11,6 +12,7 @@ class CommentsWidget extends React.Component {
       comments: []
     }
     this.fetchPostForComment = this.fetchPostForComment.bind(this)
+    this.renderComments = this.renderComments.bind(this)
   }
 
   async fetchFromAPI (path) {
@@ -30,18 +32,23 @@ class CommentsWidget extends React.Component {
       .then(comments => { this.setState({comments}) })
   }
 
+  renderComments (comments) {
+    return comments.map(comment => (
+      <li key={comment.id} className='recentcomments'>
+        <span className='comment-author-link'>
+          <a href={comment.author_url}>{comment.author_name}</a>
+        </span> on <a href={comment.link}>{comment.post_name}</a>
+      </li>
+    ))
+  }
+
   render () {
+    let comments = this.state.comments
     return (
       <section id='recent-comments-2' className='widget widget_recent_comments'>
         <h2 className='widget-title'>Recent Comments</h2>
         <ul id='recentcomments'>
-          {this.state.comments.map(comment => (
-            <li key={comment.id} className='recentcomments'>
-              <span className='comment-author-link'>
-                <a href={comment.author_url}>{comment.author_name}</a>
-              </span> on <a href={comment.link}>{comment.post_name}</a>
-            </li>
-          ))}
+          {comments.length ? this.renderComments(comments) : <Spinner />}
         </ul>
       </section>
     )

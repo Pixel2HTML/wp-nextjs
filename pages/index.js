@@ -3,15 +3,14 @@ import fetch from 'isomorphic-fetch'
 import Head from '../components/Head'
 import Hero from '../components/Hero'
 import Main from '../components/Main'
-const baseURL = 'http://wp.pixel2html.com/examples/nextjs/'
+import config from '../config'
 
-import wp from '../wp'
 // Todo: add smooth scrollinggggg
 
 export default class extends React.Component {
   static async getInitialProps () {
     // GET Name and Blog Description
-    const res2 = await fetch(baseURL + 'wp-json')
+    const res2 = await fetch(config.endpoint)
     const data = await res2.json()
     return {
       title: data.name,
@@ -19,7 +18,6 @@ export default class extends React.Component {
     }
   }
   render () {
-    console.log(wp)
     return (
       <div>
         <Head title={this.props.title} />
