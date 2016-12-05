@@ -1,9 +1,11 @@
+'use strict'
+
 import React from 'react'
 import Link from 'next/link'
 import Fetch from 'isomorphic-fetch'
 
 
-class Recents extends React.Component {
+class PostsWidget extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -33,4 +35,4 @@ class Recents extends React.Component {
   }
 }
 
-export default Recents
+export default PostsWidget

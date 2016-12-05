@@ -1,15 +1,16 @@
+'use strict'
 import React from 'react'
 import Search from './Search'
-import Recents from './Recents'
-import RecentComments from './RecentComments'
+import PostsWidget from './PostsWidget'
+import CommentsWidget from './CommentsWidget'
 
 class Sidebar extends React.Component {
   render () {
     return (
       <div>
         <Search />
-        <Recents />
-        <RecentComments />
+        <PostsWidget />
+        <CommentsWidget />
       </div>
     )
   }
