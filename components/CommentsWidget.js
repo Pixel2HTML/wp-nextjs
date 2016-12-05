@@ -26,7 +26,7 @@ class CommentsWidget extends React.Component {
 
   async componentDidMount () {
     const comments = await this.fetchFromAPI('comments')
-    Promise.all(comments.slice(0, 5).map(await this.fetchPostForComment))
+    Promise.all(comments.slice(0, 5).map(this.fetchPostForComment))
       .then(comments => { this.setState({comments}) })
   }
 
