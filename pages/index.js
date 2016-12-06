@@ -4,6 +4,7 @@ import Head from '../components/Head'
 import Hero from '../components/Hero'
 import Main from '../components/Main'
 import config from '../config'
+import Posts from '../components/Posts'
 // import wp from '../wp'
 
 // Todo: add smooth scrollinggggg
@@ -25,7 +26,9 @@ export default class extends React.Component {
         <Head title={this.props.title} />
         <Hero title={this.props.title} description={this.props.description} hasimage frontPage />
         <div className='blog has-sidebar'>
-          <Main hasSidebar />
+          <Main hasSidebar hasHeader headerTitle='Posts'>
+            <Posts />
+          </Main>
         </div>
       </div>
     )

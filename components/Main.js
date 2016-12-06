@@ -1,8 +1,22 @@
 import React from 'react'
-import Posts from './Posts'
 import Sidebar from './Sidebar'
 
 export default class Main extends React.Component {
+  constructor (props) {
+    super(props)
+    this.renderHeader = this.renderHeader.bind(this)
+  }
+
+  renderHeader () {
+    let shouldHaveHeader = this.props.hasHeader
+    if (shouldHaveHeader) {
+      return (
+        <header className='page-header'>
+          <h2 className='page-title'>{this.props.headerTitle}</h2>
+        </header>
+      )
+    }
+  }
 
   render () {
     let siteContent = 'site-content-contain'
@@ -12,11 +26,9 @@ export default class Main extends React.Component {
       <div className={siteContent}>
         <div className='site-content' id='content'>
           <div className='wrap'>
-            <header className='page-header'>
-              <h2 className='page-title'>Posts</h2>
-            </header>
+            {this.renderHeader()}
             <div id='primary' className='content-area'>
-              <Posts />
+              {this.props.children}
             </div>
             <aside id='secondary' className='widget-area' role='complementary'>
               <Sidebar />
