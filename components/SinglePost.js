@@ -2,6 +2,7 @@
 import React from 'react'
 import PostHeader from './SinglePostHeader'
 import PostFooter from './SinglePostFooter'
+import PostComments from './SinglePostComments'
 
 class SinglePost extends React.Component {
   render () {
@@ -14,6 +15,7 @@ class SinglePost extends React.Component {
           <div className='entry-content' dangerouslySetInnerHTML={{__html: post.content.rendered}} />
           <PostFooter post={post} />
         </article>
+        <PostComments />
       </main>
     )
   }
