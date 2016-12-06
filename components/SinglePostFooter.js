@@ -15,6 +15,7 @@ class PostFooter extends React.Component {
     this.fetchFromAPI = this.fetchFromAPI.bind(this)
     this.fetchCategory = this.fetchCategory.bind(this)
     this.renderCategories = this.renderCategories.bind(this)
+    this.fetchTag = this.fetchTag.bind(this)
   }
 
   async fetchFromAPI (path) {
@@ -26,10 +27,18 @@ class PostFooter extends React.Component {
     return await this.fetchFromAPI('categories/' + categoryId)
   }
 
+  async fetchTag (tagId) {
+    return await this.fetchFromAPI('tags/' + tagId)
+  }
+
   async componentDidMount () {
     let categories = this.props.post.categories
     Promise.all(categories.map(this.fetchCategory))
       .then(categories => { this.setState({categories}) })
+
+    let tags = this.props.post.tags
+    Promise.all(tags.map(this.fetchTag))
+      .then(tags => { this.setState({tags}) })
   }
 
   renderCategories (categories) {
@@ -40,6 +49,7 @@ class PostFooter extends React.Component {
 
   render () {
     let categories = this.state.categories
+    let tags = this.state.tags
     return (
       <footer className='entry-footer'>
         <span className='cat-tags-links'>
@@ -50,7 +60,13 @@ class PostFooter extends React.Component {
             <span className='screen-reader-text'>Categories</span>
             {categories.length ? this.renderCategories(categories) : <Spinner />}
           </span>
-          <span className='tags-links' />
+          <span className='tags-links'>
+            <svg viewBox='0 0 32 32' className='icon icon-hashtag' ariaHidden='true' role='img' version='1.1' xmls='http://www.w3.org/2000/svg'>
+              <path d='M17.696 18.286l1.143-4.571h-4.536l-1.143 4.571h4.536zM31.411 9.286l-1 4q-0.125 0.429-0.554 0.429h-5.839l-1.143 4.571h5.554q0.268 0 0.446 0.214 0.179 0.25 0.107 0.5l-1 4q-0.089 0.429-0.554 0.429h-5.839l-1.446 5.857q-0.125 0.429-0.554 0.429h-4q-0.286 0-0.464-0.214-0.161-0.214-0.107-0.5l1.393-5.571h-4.536l-1.446 5.857q-0.125 0.429-0.554 0.429h-4.018q-0.268 0-0.446-0.214-0.161-0.214-0.107-0.5l1.393-5.571h-5.554q-0.268 0-0.446-0.214-0.161-0.214-0.107-0.5l1-4q0.125-0.429 0.554-0.429h5.839l1.143-4.571h-5.554q-0.268 0-0.446-0.214-0.179-0.25-0.107-0.5l1-4q0.089-0.429 0.554-0.429h5.839l1.446-5.857q0.125-0.429 0.571-0.429h4q0.268 0 0.446 0.214 0.161 0.214 0.107 0.5l-1.393 5.571h4.536l1.446-5.857q0.125-0.429 0.571-0.429h4q0.268 0 0.446 0.214 0.161 0.214 0.107 0.5l-1.393 5.571h5.554q0.268 0 0.446 0.214 0.161 0.214 0.107 0.5z' />
+            </svg>
+            <span className='screen-reader-text'>Tags</span>
+            {tags.length ? this.renderCategories(tags) : <Spinner />}
+          </span>
         </span>
       </footer>
     )
