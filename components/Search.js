@@ -1,5 +1,5 @@
 import React from 'react'
-
+import config from '../config'
 // const baseSearch = 'http://wp.pixel2html.com/examples/nextjs/wp-json/wp/v2/posts?search='
 
 class Search extends React.Component {
@@ -11,7 +11,8 @@ class Search extends React.Component {
   }
 
   submitHandler (event) {
-    console.log(this.state.search)
+    let query = config.endpoint + '/wp/v2/posts?search=' + encodeURIComponent(this.state.search)
+    console.log(query)
     event.preventDefault()
   }
 
