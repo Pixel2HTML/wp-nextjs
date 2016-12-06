@@ -9,7 +9,7 @@ class SinglePost extends React.Component {
     let author = this.props.author
     return (
       <main id='main' className='site-main' role='main'>
-        <article className='single'>
+        <article className='single single-post'>
           <PostHeader post={post} author={author} />
           <div className='entry-content' dangerouslySetInnerHTML={{__html: post.content.rendered}} />
           <PostFooter post={post} />
