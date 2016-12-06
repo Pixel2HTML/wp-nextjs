@@ -34,11 +34,23 @@ class PostFooter extends React.Component {
   async componentDidMount () {
     let categories = this.props.post.categories
     Promise.all(categories.map(this.fetchCategory))
-      .then(categories => { this.setState({categories}) })
+      .then(categories => {
+        if (categories.length > 0) {
+          this.setState({categories})
+        } else {
+          this.setState({categories: [{id: 8888, link: '#', name: 'Uncategorized'}]})
+        }
+      })
 
     let tags = this.props.post.tags
     Promise.all(tags.map(this.fetchTag))
-      .then(tags => { this.setState({tags}) })
+      .then(tags => {
+        if (tags.length > 0) {
+          this.setState({tags})
+        } else {
+          this.setState({tags: [{id: 99999, link: '#', name: 'Untagged'}]})
+        }
+      })
   }
 
   renderCategories (categories) {
