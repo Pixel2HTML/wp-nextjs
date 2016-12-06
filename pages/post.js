@@ -25,11 +25,9 @@ export default class extends React.Component {
       <div>
         <Head title={post.title.rendered} />
         <Hero title={this.props.title} description={this.props.description} hasimage />
-        <div className='has-sidebar'>
-          <Main>
-            <h2>A post shall be made</h2>
-          </Main>
-        </div>
+        <Main hasSidebar>
+          <h2>A post shall be made</h2>
+        </Main>
       </div>
     )
   }
