@@ -1,9 +1,10 @@
 import React from 'react'
 import fetch from 'isomorphic-fetch'
-import Post from '../components/Post'
+// import Post from '../components/Post'
 import Head from '../components/Head'
 import Hero from '../components/Hero'
 import config from '../config'
+import Main from '../components/Main.js'
 
 export default class extends React.Component {
   static async getInitialProps ({query: { id }}) {
@@ -24,13 +25,10 @@ export default class extends React.Component {
       <div>
         <Head title={post.title.rendered} />
         <Hero title={this.props.title} description={this.props.description} hasimage />
-        <div className='site-content-contain'>
-          <Post
-            key={post.id}
-            id={post.id}
-            title={post.title.rendered}
-            link={post.link}
-            excerpt={post.excerpt.rendered} />
+        <div className='has-sidebar'>
+          <Main>
+            <h2>A post shall be made</h2>
+          </Main>
         </div>
       </div>
     )
