@@ -3,15 +3,17 @@ import fetch from 'isomorphic-fetch'
 import Post from '../components/Post'
 import Head from '../components/Head'
 import Hero from '../components/Hero'
-
-const baseURL = 'http://wp.pixel2html.com/examples/nextjs/'
-const APIendpoint = 'wp-json/wp/v2/'
+import config from '../config'
 
 export default class extends React.Component {
   static async getInitialProps ({query: { id }}) {
-    const res = await fetch(baseURL + APIendpoint + 'posts/' + id)
+    const res = await fetch(config.oldEnpoint + '/wp/v2/posts/' + id)
     const post = await res.json()
+    const res2 = await fetch(config.oldEnpoint)
+    const data = await res2.json()
     return {
+      title: data.name,
+      description: data.description,
       post: post
     }
   }
@@ -21,7 +23,7 @@ export default class extends React.Component {
     return (
       <div>
         <Head title={post.title.rendered} />
-        <Hero hasimage />
+        <Hero title={this.props.title} description={this.props.description} hasimage />
         <div className='site-content-contain'>
           <Post
             key={post.id}
