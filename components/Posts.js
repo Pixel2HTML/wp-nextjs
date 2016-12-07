@@ -1,24 +1,25 @@
 import React from 'react'
 import Post from './Post'
-import Fetch from 'isomorphic-fetch'
 import Spinner from './Spinner'
-
-import config from '../config'
+import LoadMorePosts from './LoadMorePosts'
+import wp from '../wp'
 
 export default class Posts extends React.Component {
 
   constructor (props) {
     super(props)
     this.state = {
-      posts: []
+      posts: [],
+      totalPages: 1,
+      currentPage: 1
     }
     this.renderPosts = this.renderPosts.bind(this)
   }
 
   async componentDidMount () {
-    const res = await Fetch(config.endpoint+'/wp/v2/posts')
-    const posts = await res.json()
-    this.setState({posts})
+    const posts = await wp.posts().page(1)
+    let totalPages = posts._paging.totalPages
+    this.setState({posts, totalPages})
   }
 
   renderPosts (posts) {
@@ -36,9 +37,11 @@ export default class Posts extends React.Component {
 
   render () {
     let posts = this.state.posts
+    console.log(this.state.totalPages)
     return (
       <main id='main' className='site-main' role='main'>
         {posts.length ? this.renderPosts(posts) : <Spinner />}
+        <LoadMorePosts />
       </main>
     )
   }

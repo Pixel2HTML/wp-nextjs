@@ -5,8 +5,6 @@ import Main from '../components/Main'
 import Posts from '../components/Posts'
 import { Site } from '../wp'
 
-// Todo: add smooth scrollinggggg
-
 export default class extends React.Component {
   static async getInitialProps () {
     const site = await Site.root()

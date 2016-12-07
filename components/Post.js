@@ -17,7 +17,7 @@ export default class Post extends React.Component {
             <Link href={`/post?id=${this.props.id}`} rel='bookmark'>{this.props.title}</Link>
           </h2>
         </header>
-        <div dangerouslySetInnerHTML={{__html: this.props.excerpt}} />
+        <div className='entry-content' dangerouslySetInnerHTML={{__html: this.props.excerpt}} />
       </article>
     )
   }
