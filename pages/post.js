@@ -8,13 +8,13 @@ import SinglePost from '../components/SinglePost'
 
 export default class extends React.Component {
   static async getInitialProps ({query: { id }}) {
-    const res = await fetch(config.oldEnpoint + '/wp/v2/posts/' + id)
+    const res = await fetch(config.endpoint + '/wp/v2/posts/' + id)
     const post = await res.json()
 
-    const res2 = await fetch(config.oldEnpoint)
+    const res2 = await fetch(config.endpoint)
     const data = await res2.json()
 
-    const res3 = await fetch(config.oldEnpoint + '/wp/v2/users/' + post.author)
+    const res3 = await fetch(config.endpoint + '/wp/v2/users/' + post.author)
     const author = await res3.json()
 
     return {

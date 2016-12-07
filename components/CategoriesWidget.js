@@ -3,6 +3,8 @@
 import React from 'react'
 import Fetch from 'isomorphic-fetch'
 
+import config from '../config'
+
 class CategoriesWidget extends React.Component {
   constructor (props) {
     super(props)
@@ -12,7 +14,7 @@ class CategoriesWidget extends React.Component {
   }
 
   async componentDidMount () {
-    let res = await Fetch('http://wp.pixel2html.com/examples/nextjs/wp-json/wp/v2/categories')
+    let res = await Fetch(config.endpoint+'/wp/v2/categories')
     let categories = await res.json()
     this.setState({categories})
   }

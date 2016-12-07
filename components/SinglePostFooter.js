@@ -3,7 +3,8 @@
 import React from 'react'
 import Fetch from 'isomorphic-fetch'
 import Spinner from './Spinner'
-const baseURL = 'http://wp.pixel2html.com/examples/nextjs/wp-json/wp/v2/'
+
+import config from '../config'
 
 class PostFooter extends React.Component {
   constructor (props) {
@@ -19,7 +20,7 @@ class PostFooter extends React.Component {
   }
 
   async fetchFromAPI (path) {
-    let response = await Fetch(baseURL + path)
+    let response = await Fetch(config.endpoint+'/wp/v2/'+ path)
     return response.json()
   }
 

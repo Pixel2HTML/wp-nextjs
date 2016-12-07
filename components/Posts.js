@@ -3,6 +3,8 @@ import Post from './Post'
 import Fetch from 'isomorphic-fetch'
 import Spinner from './Spinner'
 
+import config from '../config'
+
 export default class Posts extends React.Component {
 
   constructor (props) {
@@ -14,7 +16,7 @@ export default class Posts extends React.Component {
   }
 
   async componentDidMount () {
-    const res = await Fetch('http://wp.pixel2html.com/examples/nextjs/wp-json/wp/v2/posts')
+    const res = await Fetch(config.endpoint+'/wp/v2/posts')
     const posts = await res.json()
     this.setState({posts})
   }
