@@ -9,4 +9,8 @@ const wp = new WPAPI({
   password: config.pw
 })
 
+const Site = WPAPI.site(config.endpoint)
+
+export { Site }
+
 export default wp
