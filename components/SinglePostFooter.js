@@ -1,10 +1,8 @@
 'use strict'
 
 import React from 'react'
-import Fetch from 'isomorphic-fetch'
 import Spinner from './Spinner'
-
-import config from '../config'
+import wp from '../wp'
 
 class PostFooter extends React.Component {
   constructor (props) {
@@ -13,23 +11,17 @@ class PostFooter extends React.Component {
       categories: [],
       tags: []
     }
-    this.fetchFromAPI = this.fetchFromAPI.bind(this)
     this.fetchCategory = this.fetchCategory.bind(this)
     this.renderCategories = this.renderCategories.bind(this)
     this.fetchTag = this.fetchTag.bind(this)
   }
 
-  async fetchFromAPI (path) {
-    let response = await Fetch(config.endpoint+'/wp/v2/'+ path)
-    return response.json()
-  }
-
   async fetchCategory (categoryId) {
-    return await this.fetchFromAPI('categories/' + categoryId)
+    return await wp.categories().id(categoryId)
   }
 
   async fetchTag (tagId) {
-    return await this.fetchFromAPI('tags/' + tagId)
+    return await wp.tags().id(tagId)
   }
 
   async componentDidMount () {
