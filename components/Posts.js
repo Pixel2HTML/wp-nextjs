@@ -37,7 +37,6 @@ export default class Posts extends React.Component {
 
   render () {
     let posts = this.state.posts
-    console.log(this.state.totalPages)
     return (
       <main id='main' className='site-main' role='main'>
         {posts.length ? this.renderPosts(posts) : <Spinner />}

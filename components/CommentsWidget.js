@@ -1,9 +1,7 @@
 'use strict'
 import React from 'react'
-import Fetch from 'isomorphic-fetch'
 import Spinner from './Spinner'
-
-import config from '../config'
+import wp from '../wp'
 
 class CommentsWidget extends React.Component {
   constructor (props) {
@@ -16,12 +14,11 @@ class CommentsWidget extends React.Component {
   }
 
   async fetchFromAPI (path) {
-    let response = await Fetch(config.endpoint + '/wp/v2/' + path)
-    return response.json()
+    return wp[path]()
   }
 
   async fetchPostForComment (comment) {
-    let post = await this.fetchFromAPI('posts/' + comment.post)
+    let post = await wp.posts().id(comment.post)
     comment.post_name = post.title.rendered
     return comment
   }

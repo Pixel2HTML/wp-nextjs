@@ -1,9 +1,8 @@
 'use strict'
 
 import React from 'react'
-import Fetch from 'isomorphic-fetch'
-
-import config from '../config'
+import wp from '../wp'
+import Spinner from './Spinner'
 
 class CategoriesWidget extends React.Component {
   constructor (props) {
@@ -11,24 +10,29 @@ class CategoriesWidget extends React.Component {
     this.state = {
       categories: []
     }
+    this.renderCategories = this.renderCategories.bind(this)
   }
 
   async componentDidMount () {
-    let res = await Fetch(config.endpoint+'/wp/v2/categories')
-    let categories = await res.json()
+    let categories = await wp.categories()
     this.setState({categories})
   }
 
+  renderCategories (categories) {
+    return categories.map(category => (
+      <li key={category.id} className={`cat-item cat-item-${category.id}`}>
+        <a href={category.link}>{category.name}</a>
+      </li>
+    ))
+  }
+
   render () {
+    let categories = this.state.categories
     return (
       <section id='categories-2' className='widget widget_categories'>
         <h2 className='widget-title'>Categories</h2>
         <ul>
-          {this.state.categories.map(category => (
-            <li key={category.id} className={`cat-item cat-item-${category.id}`}>
-              <a href={category.link}>{category.name}</a>
-            </li>
-          ))}
+          {categories.length ? this.renderCategories(categories) : <Spinner />}
         </ul>
       </section>
     )
