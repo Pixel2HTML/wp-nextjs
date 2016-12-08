@@ -1,6 +1,5 @@
 import React from 'react'
-import config from '../config'
-// const baseSearch = 'http://wp.pixel2html.com/examples/nextjs/wp-json/wp/v2/posts?search='
+import wp from '../wp'
 
 class Search extends React.Component {
   constructor (props) {
@@ -10,10 +9,10 @@ class Search extends React.Component {
     this.submitHandler = this.submitHandler.bind(this)
   }
 
-  submitHandler (event) {
-    let query = config.endpoint + '/wp/v2/posts?search=' + encodeURIComponent(this.state.search)
-    console.log(query)
+  async submitHandler (event) {
     event.preventDefault()
+    let query = await wp.posts().search(encodeURIComponent(this.state.search))
+    console.log(query)
   }
 
   searchHandler (event) {
