@@ -10,4 +10,5 @@ However we still need to define the global state object which is tightly the sam
 - Search Results: The list of posts that match what was searched with the search widget
 - Categories: List of categories to be rendered on the sidebar.
 - Recent Comments: List of recent comments to be rendered on the sidebar.
+- UI State: Some strings to tell us if there is data being loaded, or has loaded to display spinners or render it.
 
