@@ -2,7 +2,7 @@
 import React from 'react'
 import Search from './Search'
 import PostsWidget from './PostsWidget'
-import CommentsWidget from './CommentsWidget'
+import CommentsWidgetContainer from './CommentsWidgetContainer'
 import CategoriesWidget from './CategoriesWidget'
 
 class Sidebar extends React.Component {
@@ -11,7 +11,7 @@ class Sidebar extends React.Component {
       <div>
         <Search />
         <PostsWidget />
-        <CommentsWidget />
+        <CommentsWidgetContainer />
         <CategoriesWidget />
       </div>
     )

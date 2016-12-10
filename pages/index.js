@@ -9,7 +9,7 @@ export default class extends React.Component {
   static async getInitialProps ({ req }) {
     console.log(reducer)
     const isServer = !!req
-    const store = initStore(reducer, null, isServer)
+    const store = initStore(reducer, {}, isServer)
     const site = await Site.root()
     store.dispatch(getSite(site))
     return {
