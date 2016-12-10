@@ -1,27 +1,34 @@
 import React from 'react'
-import Head from '../components/Head'
-import Hero from '../components/Hero'
-import Main from '../components/Main'
-import Posts from '../components/Posts'
+import { initStore, reducer } from '../redux'
+import { Provider } from 'react-redux'
+import { getSite } from '../redux/actions'
 import { Site } from '../wp'
+import Home from '../components/Home'
 
 export default class extends React.Component {
-  static async getInitialProps () {
+  static async getInitialProps ({ req }) {
+    console.log(reducer)
+    const isServer = !!req
+    const store = initStore(reducer, null, isServer)
     const site = await Site.root()
+    store.dispatch(getSite(site))
     return {
-      title: site.name,
-      description: site.description
+      initialState: store.getState(),
+      isServer
     }
   }
+
+  constructor (props) {
+    super(props)
+    this.store = initStore(reducer, props.initialState, props.isServer)
+  }
+
   render () {
+    console.log(this.props)
     return (
-      <div>
-        <Head title={this.props.title} />
-        <Hero title={this.props.title} description={this.props.description} hasimage frontPage />
-        <Main hasSidebar hasHeader headerTitle='Posts'>
-          <Posts />
-        </Main>
-      </div>
+      <Provider store={this.store}>
+        <Home />
+      </Provider>
     )
   }
 }
