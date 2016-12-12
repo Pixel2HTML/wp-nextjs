@@ -1,7 +1,8 @@
-// All of our ty
+// All of our action types
 const GET_SITE = 'GET_SITE'
 const GET_CATEGORIES = 'GET_CATEGORIES'
 const GOT_CATEGORIES = 'GOT_CATEGORIES'
+const GOT_COMMENTS = 'GOT_COMMENTS'
 
 /**
  *  Fetch the root site info
@@ -39,11 +40,26 @@ function receivedCategories (categories) {
   }
 }
 
+/**
+ * Trigger a state update when you get some recent comments
+ * @param {array} comments
+ * @returns {object} action to pass to the reducer
+ */
+
+function receivedComments (comments) {
+  return {
+    type: GOT_COMMENTS,
+    comments
+  }
+}
+
 export {
   GET_SITE,
   getSite,
   GET_CATEGORIES,
   requestCategories,
   GOT_CATEGORIES,
-  receivedCategories
+  receivedCategories,
+  GOT_COMMENTS,
+  receivedComments
 }

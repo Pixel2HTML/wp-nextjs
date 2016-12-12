@@ -3,7 +3,8 @@ import { combineReducers } from 'redux'
 import {
   GET_SITE,
   GET_CATEGORIES,
-  GOT_CATEGORIES
+  GOT_CATEGORIES,
+  GOT_COMMENTS
 } from './actions'
 
 /**
@@ -48,12 +49,31 @@ function categories (state = {
   }
 }
 
+/**
+ * Get or update the recent comments from a source of truth
+ */
+function comments (state = {
+  isFetching: false,
+  gotError: false,
+  items: []
+}, action) {
+  switch (action.type) {
+    case GOT_COMMENTS:
+      return Object.assign({}, state, {
+        isFetching: false,
+        items: action.comments
+      })
+    default: return state
+  }
+}
+
 /*
  * Our whole reducer combined from every other reducer
  */
 const wpApp = combineReducers({
   site,
-  categories
+  categories,
+  comments
 })
 
 export default wpApp

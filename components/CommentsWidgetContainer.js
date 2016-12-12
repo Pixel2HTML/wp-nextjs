@@ -1,7 +1,7 @@
-import React from 'react'
+import { Component } from 'react'
 import CommentsWidget from './CommentsWidget'
 
-class CommentsWidgetContainer extends React.Component {
+class CommentsWidgetContainer extends Component {
   constructor (props) {
     super(props)
     this.props = props
