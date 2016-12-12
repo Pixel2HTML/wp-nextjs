@@ -6,16 +6,23 @@ import wp from '../wp'
 import { connect } from 'react-redux'
 import { receivedCategories } from '../redux/actions'
 
-async function mapStateToProps (state) {
-  let categories = await wp.categories()
-  state.dispatch(receivedCategories(categories))
+function mapStateToProps (store) {
   return {
-    isFetching: state.categories.isFetching,
-    categories: state.categories.items
+    isFetching: store.categories.isFetching,
+    categories: store.categories.items
   }
 }
 
+const dispatchToProps = { receivedCategories }
+
 class CategoriesWidgetContainer extends React.Component {
+
+  async componentDidMount () {
+    const {receivedCategories} = this.props
+    let categories = await wp.categories()
+    receivedCategories(categories)
+  }
+
   render () {
     let {categories, isFetching} = this.props
     if (!isFetching) {
@@ -30,4 +37,4 @@ class CategoriesWidgetContainer extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(CategoriesWidgetContainer)
+export default connect(mapStateToProps, dispatchToProps)(CategoriesWidgetContainer)
