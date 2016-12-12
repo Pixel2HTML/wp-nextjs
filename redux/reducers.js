@@ -1,6 +1,10 @@
 import { combineReducers } from 'redux'
 // Custom actions
-import { GET_SITE, GET_CATEGORIES } from './actions'
+import {
+  GET_SITE,
+  GET_CATEGORIES,
+  GOT_CATEGORIES
+} from './actions'
 
 /**
  * Get or update the site from a source of truth
@@ -20,16 +24,25 @@ function site (state = {}, action) {
 
 /**
  * Get or update the categories from a source of truth
+ * since this is async we need some params for state update
  * @param {object} state
  * @param {object} action
  * @returns {object} a new state
  */
-
-function categories (state = {}, action) {
+function categories (state = {
+  isFetching: false,
+  gotError: false,
+  items: []
+}, action) {
   switch (action.type) {
     case GET_CATEGORIES:
       return Object.assign({}, state, {
-        categories: action.categories
+        isFetching: true
+      })
+    case GOT_CATEGORIES:
+      return Object.assign({}, state, {
+        isFetching: false,
+        items: action.categories
       })
     default: return state
   }

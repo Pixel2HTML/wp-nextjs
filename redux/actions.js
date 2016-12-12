@@ -1,6 +1,7 @@
 // All of our ty
 const GET_SITE = 'GET_SITE'
 const GET_CATEGORIES = 'GET_CATEGORIES'
+const GOT_CATEGORIES = 'GOT_CATEGORIES'
 
 /**
  *  Fetch the root site info
@@ -18,11 +19,31 @@ function getSite (site) {
  * Get the categories from a source of truth
  * @param {array} categories - the categories to update
  */
-function getCategories (categories) {
+function requestCategories (categories) {
   return {
     type: GET_CATEGORIES,
     categories
   }
 }
 
-export { GET_SITE, getSite, GET_CATEGORIES, getCategories }
+/**
+ * Trigger a state update when getting categories
+ *
+ * @param {array} categories
+ */
+
+function receivedCategories (categories) {
+  return {
+    type: GOT_CATEGORIES,
+    categories
+  }
+}
+
+export {
+  GET_SITE,
+  getSite,
+  GET_CATEGORIES,
+  requestCategories,
+  GOT_CATEGORIES,
+  receivedCategories
+}

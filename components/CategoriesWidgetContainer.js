@@ -1,19 +1,33 @@
 import React from 'react'
 import CategoriesWidget from './CategoriesWidget'
+import Spinner from './Spinner'
+import wp from '../wp'
 
-class CategoriesWidgetContainer extends React.Component {
-  constructor () {
-    super()
-    this.state = {
-      posts: []
-    }
-  }
+import { connect } from 'react-redux'
+import { receivedCategories } from '../redux/actions'
 
-  render () {
-    return (
-      <CategoriesWidget />
-    )
+async function mapStateToProps (state) {
+  let categories = await wp.categories()
+  state.dispatch(receivedCategories(categories))
+  return {
+    isFetching: state.categories.isFetching,
+    categories: state.categories.items
   }
 }
 
-export default CategoriesWidgetContainer
+class CategoriesWidgetContainer extends React.Component {
+  render () {
+    let {categories, isFetching} = this.props
+    if (!isFetching) {
+      return (
+        <CategoriesWidget categories={categories} />
+      )
+    } else {
+      return (
+        <Spinner />
+      )
+    }
+  }
+}
+
+export default connect(mapStateToProps)(CategoriesWidgetContainer)
