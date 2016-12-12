@@ -8,8 +8,8 @@ import { connect } from 'react-redux'
 
 const mapStoreToProps = (store) => {
   return {
-    title: store.site.site.name,
-    description: store.site.site.description
+    title: store.site.root.name,
+    description: store.site.root.description
   }
 }
 

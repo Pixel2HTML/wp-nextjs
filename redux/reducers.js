@@ -1,12 +1,11 @@
 import { combineReducers } from 'redux'
-
 import { GET_SITE } from './actions'
 
 function site (state = {}, action) {
   switch (action.type) {
     case GET_SITE:
       return Object.assign({}, state, {
-        site: action.site
+        root: action.site
       })
     default:
       return state
