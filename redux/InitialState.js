@@ -4,8 +4,7 @@ let initialState = {
   activePost: {},
   searchResults: [],
   categories: [],
-  comments: [],
-  uiState: null
+  comments: []
 }
 
 export default initialState
