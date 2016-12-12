@@ -4,12 +4,22 @@ import Hero from './Hero'
 import Main from './Main'
 import Posts from './Posts'
 
-export default class Home extends React.Component {
+import { connect } from 'react-redux'
+
+const mapStoreToProps = (store) => {
+  return {
+    title: store.site.site.name,
+    description: store.site.site.description
+  }
+}
+
+class Home extends React.Component {
   render () {
+    let { title, description } = this.props
     return (
       <div>
-        <Head title={this.props.title} />
-        <Hero title={this.props.title} description={this.props.description} hasimage frontPage />
+        <Head title={title} />
+        <Hero title={title} description={description} hasimage frontPage />
         <Main hasSidebar hasHeader headerTitle='Posts'>
           <Posts />
         </Main>
@@ -17,3 +27,5 @@ export default class Home extends React.Component {
     )
   }
 }
+
+export default connect(mapStoreToProps)(Home)

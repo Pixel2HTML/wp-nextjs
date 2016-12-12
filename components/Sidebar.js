@@ -3,7 +3,7 @@ import React from 'react'
 import Search from './Search'
 import PostsWidget from './PostsWidget'
 import CommentsWidgetContainer from './CommentsWidgetContainer'
-import CategoriesWidget from './CategoriesWidget'
+import CategoriesWidgetContainer from './CategoriesWidgetContainer'
 
 class Sidebar extends React.Component {
   render () {
@@ -12,7 +12,7 @@ class Sidebar extends React.Component {
         <Search />
         <PostsWidget />
         <CommentsWidgetContainer />
-        <CategoriesWidget />
+        <CategoriesWidgetContainer />
       </div>
     )
   }

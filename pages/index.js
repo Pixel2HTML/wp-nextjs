@@ -7,7 +7,6 @@ import Home from '../components/Home'
 
 export default class extends React.Component {
   static async getInitialProps ({ req }) {
-    console.log(reducer)
     const isServer = !!req
     const store = initStore(reducer, {}, isServer)
     const site = await Site.root()
@@ -24,7 +23,6 @@ export default class extends React.Component {
   }
 
   render () {
-    console.log(this.props)
     return (
       <Provider store={this.store}>
         <Home />
