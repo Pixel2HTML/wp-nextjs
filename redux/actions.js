@@ -1,15 +1,16 @@
 // All of our action types
-const GET_SITE = 'GET_SITE'
-const GET_CATEGORIES = 'GET_CATEGORIES'
-const GOT_CATEGORIES = 'GOT_CATEGORIES'
-const GOT_COMMENTS = 'GOT_COMMENTS'
+export const GET_SITE = 'GET_SITE'
+export const GET_CATEGORIES = 'GET_CATEGORIES'
+export const GOT_CATEGORIES = 'GOT_CATEGORIES'
+export const GOT_COMMENTS = 'GOT_COMMENTS'
+export const REQUEST_POSTS = 'REQUEST_POSTS'
+export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 
 /**
  *  Fetch the root site info
  *  @param {object} site - the new site to update
  */
-
-function getSite (site) {
+export function getSite (site) {
   return {
     type: GET_SITE,
     site
@@ -20,7 +21,7 @@ function getSite (site) {
  * Get the categories from a source of truth
  * @param {array} categories - the categories to update
  */
-function requestCategories (categories) {
+export function requestCategories (categories) {
   return {
     type: GET_CATEGORIES,
     categories
@@ -33,7 +34,7 @@ function requestCategories (categories) {
  * @param {array} categories
  */
 
-function receivedCategories (categories) {
+export function receivedCategories (categories) {
   return {
     type: GOT_CATEGORIES,
     categories
@@ -45,21 +46,10 @@ function receivedCategories (categories) {
  * @param {array} comments
  * @returns {object} action to pass to the reducer
  */
-
-function receivedComments (comments) {
+export function receivedComments (comments) {
   return {
     type: GOT_COMMENTS,
     comments
   }
 }
 
-export {
-  GET_SITE,
-  getSite,
-  GET_CATEGORIES,
-  requestCategories,
-  GOT_CATEGORIES,
-  receivedCategories,
-  GOT_COMMENTS,
-  receivedComments
-}

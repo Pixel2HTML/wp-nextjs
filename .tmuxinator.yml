@@ -5,3 +5,4 @@ root: ~/git/nextjs
 windows:
   - editor: vim .
   - server: yarn run dev
+  - git: gs
