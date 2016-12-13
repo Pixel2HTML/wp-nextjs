@@ -53,3 +53,21 @@ export function receivedComments (comments) {
   }
 }
 
+/**
+ * Let the state know we're about to fetch some comments
+ */
+export function requestPosts () {
+  return {
+    type: REQUEST_POSTS
+  }
+}
+
+/**
+ * Trigger a state update once we get all the comments
+ */
+export function receivePosts (posts) {
+  return {
+    type: RECEIVE_POSTS,
+    posts
+  }
+}

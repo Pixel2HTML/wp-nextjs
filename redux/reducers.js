@@ -4,7 +4,9 @@ import {
   GET_SITE,
   GET_CATEGORIES,
   GOT_CATEGORIES,
-  GOT_COMMENTS
+  GOT_COMMENTS,
+  REQUEST_POSTS,
+  RECEIVE_POSTS
 } from './actions'
 
 /**
@@ -67,13 +69,32 @@ function comments (state = {
   }
 }
 
+function posts (state = {
+  isFetching: false,
+  gotError: false,
+  items: [],
+  currentPage: 1
+}, action) {
+  switch (action.type) {
+    case REQUEST_POSTS:
+      return Object.assign({}, state, {
+        isFetching: true
+      })
+    case RECEIVE_POSTS:
+      return Object.assign({}, state, {
+        isFetching: false,
+        items: action.posts
+      })
+    default: return state
+  }
+}
+
 /*
  * Our whole reducer combined from every other reducer
  */
-const wpApp = combineReducers({
+export default combineReducers({
   site,
   categories,
-  comments
+  comments,
+  posts
 })
-
-export default wpApp
