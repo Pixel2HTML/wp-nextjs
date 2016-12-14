@@ -50,7 +50,6 @@ class Posts extends Component {
 
   render () {
     let { posts, paging, currentPage, isFetching } = this.props
-    console.log(isFetching)
     // Logic to display or not the get more posts button
     let totalPages
     if (paging) {
