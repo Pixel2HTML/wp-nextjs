@@ -1,8 +1,12 @@
-'use strict'
+import {Component} from 'react'
+import {connect} from 'react-redux'
+import {requestPosts} from '../redux/actions'
 
-import React from 'react'
+const actionCreators = {
+  requestPosts
+}
 
-export default class LoadMorePosts extends React.Component {
+class LoadMorePosts extends Component {
   render () {
     return (
       <nav className='navigation pagination' role='navigation'>
@@ -12,3 +16,5 @@ export default class LoadMorePosts extends React.Component {
     )
   }
 }
+
+export default connect(undefined, actionCreators)(LoadMorePosts)

@@ -9,6 +9,7 @@ import {
   RECEIVE_POSTS
 } from './actions'
 
+import { preventDuplicatePosts } from './helpers'
 /**
  * Get or update the site from a source of truth
  * @param {object} state
@@ -69,6 +70,9 @@ function comments (state = {
   }
 }
 
+/**
+ * Get or update the recent posts from a source of truth
+ */
 function posts (state = {
   isFetching: false,
   gotError: false,
@@ -83,7 +87,8 @@ function posts (state = {
     case RECEIVE_POSTS:
       return Object.assign({}, state, {
         isFetching: false,
-        items: action.posts
+        items: preventDuplicatePosts(state.items.concat(action.posts)),
+        currentPage: state.currentPage++
       })
     default: return state
   }

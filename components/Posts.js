@@ -12,8 +12,7 @@ function mapStoreToProps (store) {
     posts: store.posts.items,
     isFetching: store.posts.isFetching,
     currentPage: store.posts.currentPage,
-    paging: store.posts.items._paging,
-    debug: store.posts
+    paging: store.posts.items._paging
   }
 }
 
@@ -51,6 +50,7 @@ class Posts extends Component {
 
   render () {
     let { posts, paging, currentPage, isFetching } = this.props
+    console.log(isFetching)
     // Logic to display or not the get more posts button
     let totalPages
     if (paging) {
@@ -58,8 +58,6 @@ class Posts extends Component {
     } else {
       totalPages = 1
     }
-
-    console.log(totalPages)
     return (
       <main id='main' className='site-main' role='main'>
         {isFetching ? <Spinner /> : this.renderPosts(posts)}
