@@ -77,7 +77,8 @@ function posts (state = {
   isFetching: false,
   gotError: false,
   items: [],
-  currentPage: 1
+  currentPage: 1,
+  totalPages: 1
 }, action) {
   switch (action.type) {
     case REQUEST_POSTS:
@@ -88,7 +89,8 @@ function posts (state = {
       return Object.assign({}, state, {
         isFetching: false,
         items: preventDuplicatePosts(state.items.concat(action.posts)),
-        currentPage: state.currentPage++
+        currentPage: state.currentPage + 1,
+        totalPages: action.totalPages
       })
     default: return state
   }

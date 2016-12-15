@@ -68,6 +68,7 @@ export function requestPosts () {
 export function receivePosts (posts) {
   return {
     type: RECEIVE_POSTS,
-    posts
+    posts,
+    totalPages: parseInt(posts._paging.totalPages)
   }
 }
