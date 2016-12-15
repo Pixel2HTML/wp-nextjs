@@ -7,7 +7,8 @@ import {
   GOT_COMMENTS,
   REQUEST_POSTS,
   RECEIVE_POSTS,
-  RECEIVE_POST
+  RECEIVE_POST,
+  RECEIVE_AUTHOR
 } from './actions'
 
 import { preventDuplicatePosts } from './helpers'
@@ -105,6 +106,10 @@ function post (state = {}, action) {
     case RECEIVE_POST:
       return Object.assign({}, state, {
         data: action.post
+      })
+    case RECEIVE_AUTHOR:
+      return Object.assign({}, state, {
+        author: action.author
       })
     default: return state
   }
