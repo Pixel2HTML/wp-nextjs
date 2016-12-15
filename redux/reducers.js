@@ -6,7 +6,8 @@ import {
   GOT_CATEGORIES,
   GOT_COMMENTS,
   REQUEST_POSTS,
-  RECEIVE_POSTS
+  RECEIVE_POSTS,
+  RECEIVE_POST
 } from './actions'
 
 import { preventDuplicatePosts } from './helpers'
@@ -96,6 +97,19 @@ function posts (state = {
   }
 }
 
+/**
+ * Get or update the active post from a source of truth
+ */
+function post (state = {}, action) {
+  switch (action.type) {
+    case RECEIVE_POST:
+      return Object.assign({}, state, {
+        data: action.post
+      })
+    default: return state
+  }
+}
+
 /*
  * Our whole reducer combined from every other reducer
  */
@@ -103,5 +117,6 @@ export default combineReducers({
   site,
   categories,
   comments,
-  posts
+  posts,
+  post
 })

@@ -5,6 +5,7 @@ export const GOT_CATEGORIES = 'GOT_CATEGORIES'
 export const GOT_COMMENTS = 'GOT_COMMENTS'
 export const REQUEST_POSTS = 'REQUEST_POSTS'
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
+export const RECEIVE_POST = 'RECEIVE_POST'
 
 /**
  *  Fetch the root site info
@@ -70,5 +71,15 @@ export function receivePosts (posts) {
     type: RECEIVE_POSTS,
     posts,
     totalPages: parseInt(posts._paging.totalPages)
+  }
+}
+
+/**
+ * Change the active post once we get it from a source of truth
+ */
+export function receivePost (post) {
+  return {
+    type: RECEIVE_POST,
+    post
   }
 }

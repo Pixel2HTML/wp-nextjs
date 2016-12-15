@@ -1,10 +1,10 @@
 import React from 'react'
-import { Site } from '../wp'
+import wp, { Site } from '../wp'
 import PostPage from '../components/PostPage'
 
 import { Provider } from 'react-redux'
 import { initStore, reducer } from '../redux'
-import { getSite } from '../redux/actions'
+import { getSite, receivePost } from '../redux/actions'
 
 export default class extends React.Component {
   static async getInitialProps ({
@@ -15,11 +15,12 @@ export default class extends React.Component {
     const isServer = !!req
     const store = initStore(reducer, {}, isServer)
 
-    // const post = await wp.posts().id(id)
+    const post = await wp.posts().id(id)
     const site = await Site.root()
     // const author = await wp.users().id(post.author)
 
     store.dispatch(getSite(site))
+    store.dispatch(receivePost(post))
     return {
       initialState: store.getState(),
       isServer
