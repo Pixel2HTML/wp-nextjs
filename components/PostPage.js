@@ -3,17 +3,31 @@ import Head from './Head'
 import Hero from './Hero'
 import Main from './Main'
 import SinglePost from './SinglePost'
+import { connect } from 'react-redux'
 
-export default class PostPage extends Component {
+const mapStoreToProps = (store) => {
+  return {
+    title: store.site.root.name,
+    description: store.site.root.description,
+    post: store.post.data,
+    postTitle: store.post.data.title.rendered,
+    author: store.post.author
+  }
+}
+
+class PostPage extends Component {
   render () {
+    let {title, description, post, author, postTitle} = this.props
     return (
       <div>
-        <Head title='Post' />
-        <Hero title='A title' description='A description' hasimage />
+        <Head title={postTitle} />
+        <Hero title={title} description={description} hasimage />
         <Main hasSidebar>
-          <SinglePost post='A post' author='An author' />
+          <SinglePost post={post} author={author} />
         </Main>
       </div>
     )
   }
 }
+
+export default connect(mapStoreToProps)(PostPage)
