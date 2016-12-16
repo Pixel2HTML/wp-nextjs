@@ -1,6 +1,18 @@
 import {Component} from 'react'
 
 export default class CommentForm extends Component {
+  state = {
+    comment: '',
+    name: '',
+    email: '',
+    website: ''
+  }
+
+  commentHandler = ev => { this.setState({comment: ev.target.value}) }
+  nameHandler = ev => { this.setState({name: ev.target.value}) }
+  emailHandler = ev => { this.setState({email: ev.target.value}) }
+  websiteHandler = ev => { this.setState({website: ev.target.value}) }
+
   render () {
     return (
       <div id='respond' className='comment-respond'>
@@ -22,6 +34,8 @@ export default class CommentForm extends Component {
               maxLength='65525'
               aria-required='true'
               required='required'
+              value={this.state.comment}
+              onChange={this.commentHandler}
               />
           </p>
           <p className='comment-form-author'>
@@ -35,6 +49,8 @@ export default class CommentForm extends Component {
               maxLength='245'
               aria-required='true'
               required='required'
+              value={this.state.name}
+              onChange={this.nameHandler}
               />
           </p>
           <p className='comment-form-email'>
@@ -49,6 +65,8 @@ export default class CommentForm extends Component {
               aria-describedby='email-notes'
               aria-required='true'
               required='required'
+              value={this.state.email}
+              onChange={this.emailHandler}
               />
           </p>
           <p className='comment-form-url'>
@@ -58,6 +76,8 @@ export default class CommentForm extends Component {
               type='url'
               size='30'
               maxLength='200'
+              value={this.state.website}
+              onChange={this.websiteHandler}
               />
           </p>
           <p className='form-submit'>
