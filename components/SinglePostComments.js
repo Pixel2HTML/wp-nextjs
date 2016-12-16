@@ -8,10 +8,11 @@ import { requestPostComments, receivePostComments } from '../redux/actions'
 
 const mapStoreToProps = (store) => {
   return {
-    post: store.post.data,
+    postTitle: store.post.data.title.rendered,
     postID: store.post.data.id,
     comments: store.post.comments.data,
     commentStatus: store.post.data.comment_status,
+    totalComments: store.post.comments.total,
     isFetching: store.post.comments.isFetching,
     debug: store.post
   }
@@ -47,11 +48,20 @@ class PostComments extends Component {
     }
   }
 
+  commentCount (title, count) {
+    if (count && count === 1) {
+      return (<h2 className='comments-title'>1 Reply to "{title}"</h2>)
+    } else if (count && count > 1) {
+      return (<h2 className='comments-title'>{count} Replies to "{title}"</h2>)
+    }
+  }
+
   render () {
-    let { comments } = this.props
+    let { comments, postTitle, totalComments } = this.props
+    console.log(comments)
     return (
       <div id='comments' className='comments-area'>
-        <h2 className='comments-title'>3 Replies to "Something about love"</h2>
+        {this.commentCount(postTitle, totalComments)}
         <ol className='comment-list'>
           {this.renderComments(comments)}
         </ol>

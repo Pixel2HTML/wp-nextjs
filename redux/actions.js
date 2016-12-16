@@ -110,8 +110,17 @@ export function requestPostComments () {
  * Receive comments for a post from a source of truth
  */
 export function receivePostComments (comments) {
-  return {
-    type: RECEIVE_POST_COMMENTS,
-    comments
+  if (comments._paging) {
+    return {
+      type: RECEIVE_POST_COMMENTS,
+      comments,
+      total: parseInt(comments._paging.total)
+    }
+  } else {
+    return {
+      type: RECEIVE_POST_COMMENTS,
+      comments,
+      total: 0
+    }
   }
 }

@@ -108,13 +108,15 @@ function post (state = {
   author: {},
   comments: {
     isFetching: false,
-    data: []
+    data: [],
+    total: 0
   }
 }, action) {
   switch (action.type) {
     case RECEIVE_POST:
       return Object.assign({}, state, {
-        data: action.post
+        data: action.post,
+        comments: {}
       })
     case RECEIVE_AUTHOR:
       return Object.assign({}, state, {
@@ -123,14 +125,17 @@ function post (state = {
     case REQUEST_POST_COMMENTS:
       return Object.assign({}, state, {
         comments: {
-          isFetching: true
+          isFetching: true,
+          data: [],
+          total: 0
         }
       })
     case RECEIVE_POST_COMMENTS:
       return Object.assign({}, state, {
         comments: {
           isFetching: false,
-          data: action.comments
+          data: action.comments,
+          total: action.total
         }
       })
     default: return state
