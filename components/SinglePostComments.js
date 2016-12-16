@@ -30,12 +30,30 @@ class PostComments extends Component {
     receivePostComments(comments)
   }
 
+  renderComments (comments) {
+    if (comments && comments.length) {
+      return (
+        comments.map(comment => (
+          <SingleComment
+            key={comment.id}
+            avatarUrl={comment.author_avatar_urls[96]}
+            authorUrl={comment.author_url}
+            authorName={comment.author_name}
+            date={comment.date}
+            content={comment.content.rendered}
+          />
+        ))
+      )
+    }
+  }
+
   render () {
+    let { comments } = this.props
     return (
       <div id='comments' className='comments-area'>
         <h2 className='comments-title'>3 Replies to "Something about love"</h2>
         <ol className='comment-list'>
-          <SingleComment />
+          {this.renderComments(comments)}
         </ol>
         <CommentForm />
       </div>
