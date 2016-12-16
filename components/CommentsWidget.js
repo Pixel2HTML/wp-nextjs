@@ -1,7 +1,7 @@
-'use strict'
 import React from 'react'
 import Spinner from './Spinner'
 import wp from '../wp'
+import Link from 'next/link'
 
 class CommentsWidget extends React.Component {
   constructor (props) {
@@ -34,7 +34,7 @@ class CommentsWidget extends React.Component {
       <li key={comment.id} className='recentcomments'>
         <span className='comment-author-link'>
           <a href={comment.author_url}>{comment.author_name}</a>
-        </span> on <a href={comment.link}>{comment.post_name}</a>
+        </span> on <Link href={`/post?id=${comment.post}`}>{comment.post_name}</Link>
       </li>
     ))
   }
