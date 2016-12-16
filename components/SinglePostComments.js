@@ -11,7 +11,9 @@ const mapStoreToProps = (store) => {
     post: store.post.data,
     postID: store.post.data.id,
     comments: store.post.comments.data,
-    isFetching: store.post.comments.isFetching
+    commentStatus: store.post.data.comment_status,
+    isFetching: store.post.comments.isFetching,
+    debug: store.post
   }
 }
 
@@ -29,8 +31,6 @@ class PostComments extends Component {
   }
 
   render () {
-    let { comments } = this.props
-    console.log(comments)
     return (
       <div id='comments' className='comments-area'>
         <h2 className='comments-title'>3 Replies to "Something about love"</h2>
