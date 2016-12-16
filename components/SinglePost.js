@@ -6,8 +6,7 @@ import PostComments from './SinglePostComments'
 
 class SinglePost extends React.Component {
   render () {
-    let post = this.props.post
-    let author = this.props.author
+    let { post, author } = this.props
     return (
       <main id='main' className='site-main' role='main'>
         <article className='single single-post'>

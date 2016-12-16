@@ -1,6 +1,6 @@
-'use strict'
 import React from 'react'
-// import Spinner form './Spinner'
+import SingleComment from './SingleComment'
+import CommentForm from './CommentForm'
 
 export default class PostComments extends React.Component {
   constructor (props) {
@@ -11,11 +11,11 @@ export default class PostComments extends React.Component {
   render () {
     return (
       <div id='comments' className='comments-area'>
-        <h2 className='comments-title'>Comments go here</h2>
+        <h2 className='comments-title'>3 Replies to "Something about love"</h2>
         <ol className='comment-list'>
-          <li>A comment</li>
-          <li>Another comment</li>
+          <SingleComment />
         </ol>
+        <CommentForm />
       </div>
     )
   }
