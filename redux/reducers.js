@@ -8,7 +8,9 @@ import {
   REQUEST_POSTS,
   RECEIVE_POSTS,
   RECEIVE_POST,
-  RECEIVE_AUTHOR
+  RECEIVE_AUTHOR,
+  REQUEST_POST_COMMENTS,
+  RECEIVE_POST_COMMENTS
 } from './actions'
 
 import { preventDuplicatePosts } from './helpers'
@@ -101,7 +103,14 @@ function posts (state = {
 /**
  * Get or update the active post from a source of truth
  */
-function post (state = {}, action) {
+function post (state = {
+  data: {},
+  author: {},
+  comments: {
+    isFetching: false,
+    data: []
+  }
+}, action) {
   switch (action.type) {
     case RECEIVE_POST:
       return Object.assign({}, state, {
@@ -110,6 +119,19 @@ function post (state = {}, action) {
     case RECEIVE_AUTHOR:
       return Object.assign({}, state, {
         author: action.author
+      })
+    case REQUEST_POST_COMMENTS:
+      return Object.assign({}, state, {
+        comments: {
+          isFetching: true
+        }
+      })
+    case RECEIVE_POST_COMMENTS:
+      return Object.assign({}, state, {
+        comments: {
+          isFetching: false,
+          data: action.comments
+        }
       })
     default: return state
   }

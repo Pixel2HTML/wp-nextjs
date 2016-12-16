@@ -7,6 +7,8 @@ export const REQUEST_POSTS = 'REQUEST_POSTS'
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 export const RECEIVE_POST = 'RECEIVE_POST'
 export const RECEIVE_AUTHOR = 'RECEIVE_AUTHOR'
+export const REQUEST_POST_COMMENTS = 'REQUEST_POST_COMMENTS'
+export const RECEIVE_POST_COMMENTS = 'REQUEST_POST_COMMENTS'
 
 /**
  *  Fetch the root site info
@@ -92,5 +94,24 @@ export function receiveAuthor (author) {
   return {
     type: RECEIVE_AUTHOR,
     author
+  }
+}
+
+/**
+ * Let the state know we are about to get some comments
+ */
+export function requestPostComments () {
+  return {
+    type: REQUEST_POST_COMMENTS
+  }
+}
+
+/**
+ * Receive comments for a post from a source of truth
+ */
+export function receivePostComments (comments) {
+  return {
+    type: RECEIVE_POST_COMMENTS,
+    comments
   }
 }
