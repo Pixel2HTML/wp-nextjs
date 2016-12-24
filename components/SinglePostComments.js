@@ -58,7 +58,6 @@ class PostComments extends Component {
 
   render () {
     let { comments, postTitle, totalComments } = this.props
-    console.log(comments)
     return (
       <div id='comments' className='comments-area'>
         {this.commentCount(postTitle, totalComments)}
