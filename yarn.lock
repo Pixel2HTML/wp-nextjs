@@ -2860,6 +2860,10 @@ rx-lite@^3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/rx-lite/-/rx-lite-3.1.2.tgz#19ce502ca572665f3b647b10939f97fd1615f102"
 
+self@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/self/-/self-1.0.0.tgz#6355f6f6502507cfc788811e0cc1c6d6269e16b8"
+
 "semver@2 || 3 || 4 || 5", semver@~5.3.0:
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.3.0.tgz#9b2ce5d3de02d17c6012ad326aa6b4d0cf54f94f"

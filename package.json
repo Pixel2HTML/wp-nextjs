@@ -16,6 +16,7 @@
     "react-scroll": "^1.4.4",
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0",
+    "self": "^1.0.0",
     "standard": "^8.6.0",
     "wpapi": "^0.12.1"
   },
