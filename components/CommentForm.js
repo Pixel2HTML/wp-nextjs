@@ -1,31 +1,41 @@
 import {Component} from 'react'
 import wp from '../wp'
 import { connect } from 'react-redux'
+import { requestPostComments, receivePostComments } from '../redux/actions'
 
 const mapStoreToProps = (store) => {
   return {
-    postID: store.post.data.id,
-    debug: store.post.comments.data
+    postID: store.post.data.id
   }
 }
 
+const actionCreators = {
+  requestPostComments,
+  receivePostComments
+}
+
 class CommentForm extends Component {
+  // All of our fields displayed in the state
   state = {
-    comment: 'wow',
-    name: 'mike',
-    email: 'mpalau@me.com',
-    website: 'https://www.google.com/'
+    comment: '',
+    name: '',
+    email: '',
+    website: ''
   }
 
+  // Handlers to update the UI as we type
   commentHandler = ev => { this.setState({comment: ev.target.value}) }
   nameHandler = ev => { this.setState({name: ev.target.value}) }
   emailHandler = ev => { this.setState({email: ev.target.value}) }
   websiteHandler = ev => { this.setState({website: ev.target.value}) }
 
+  // Handler to actually perform our submit logic
   submitHandler = (ev) => {
     ev.preventDefault()
     let { comment, name, email, website } = this.state
-    let { postID } = this.props
+    let { postID, requestPostComments, receivePostComments } = this.props
+
+    requestPostComments()
 
     wp.comments().create({
       author_name: name,
@@ -36,13 +46,20 @@ class CommentForm extends Component {
       date: new Date()
     })
     .then(res => {
-      console.log(res)
+      wp.comments().forPost(postID)
+        .then(comments => {
+          receivePostComments(comments)
+          this.setState({
+            comment: '',
+            name: '',
+            email: '',
+            website: ''
+          })
+        })
     })
   }
 
   render () {
-    let {debug} = this.props
-    console.log(debug)
     return (
       <div id='respond' className='comment-respond'>
         <h3 id='reply-title' className='comment-reply-title'>
@@ -123,4 +140,4 @@ class CommentForm extends Component {
   }
 }
 
-export default connect(mapStoreToProps)(CommentForm)
+export default connect(mapStoreToProps, actionCreators)(CommentForm)
