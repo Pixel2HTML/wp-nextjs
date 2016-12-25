@@ -1,5 +1,6 @@
 import React from 'react'
 import Sidebar from './Sidebar'
+import Footer from './Footer'
 
 export default class Main extends React.Component {
   constructor (props) {
@@ -35,6 +36,7 @@ export default class Main extends React.Component {
             </aside>
           </div>
         </div>
+        <Footer />
       </div>
     )
   }
