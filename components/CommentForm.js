@@ -1,11 +1,20 @@
 import {Component} from 'react'
+import wp from '../wp'
+import { connect } from 'react-redux'
 
-export default class CommentForm extends Component {
+const mapStoreToProps = (store) => {
+  return {
+    postID: store.post.data.id,
+    debug: store.post.comments.data
+  }
+}
+
+class CommentForm extends Component {
   state = {
-    comment: '',
-    name: '',
-    email: '',
-    website: ''
+    comment: 'wow',
+    name: 'mike',
+    email: 'mpalau@me.com',
+    website: 'https://www.google.com/'
   }
 
   commentHandler = ev => { this.setState({comment: ev.target.value}) }
@@ -13,13 +22,33 @@ export default class CommentForm extends Component {
   emailHandler = ev => { this.setState({email: ev.target.value}) }
   websiteHandler = ev => { this.setState({website: ev.target.value}) }
 
+  submitHandler = (ev) => {
+    ev.preventDefault()
+    let { comment, name, email, website } = this.state
+    let { postID } = this.props
+
+    wp.comments().create({
+      author_name: name,
+      author_email: email,
+      author_url: website,
+      content: comment,
+      post: postID,
+      date: new Date()
+    })
+    .then(res => {
+      console.log(res)
+    })
+  }
+
   render () {
+    let {debug} = this.props
+    console.log(debug)
     return (
       <div id='respond' className='comment-respond'>
         <h3 id='reply-title' className='comment-reply-title'>
             Leave a Reply
           </h3>
-        <form id='commentform' className='comment-form' noValidate >
+        <form id='commentform' className='comment-form' onSubmit={this.submitHandler} >
           <p className='comment-notes'>
             <span id='email-notes'>
                 Your email address will not be published.
@@ -84,7 +113,7 @@ export default class CommentForm extends Component {
             <input
               type='submit'
               className='submit'
-              value='PostComment'
+              value='Post Comment'
               />
           </p>
         </form>
@@ -93,3 +122,5 @@ export default class CommentForm extends Component {
     )
   }
 }
+
+export default connect(mapStoreToProps)(CommentForm)
