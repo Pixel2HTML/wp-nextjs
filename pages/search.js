@@ -8,7 +8,7 @@ import { getSite } from '../redux/actions'
 
 export default class extends Component {
   static async getInitialProps ({
-    query: { search },
+    query: { s },
     req
   }) {
     const isServer = !!req
