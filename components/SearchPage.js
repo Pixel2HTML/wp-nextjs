@@ -2,6 +2,7 @@ import { Component } from 'react'
 import Head from './Head'
 import Hero from './Hero'
 import Main from './Main'
+import Results from './Results'
 import { connect } from 'react-redux'
 
 const mapStoreToProps = store => {
@@ -19,8 +20,8 @@ class SearchPage extends Component {
       <div>
         <Head title={title} />
         <Hero title={title} description={description} hasimage />
-        <Main hasSidebar hasHeader headerTitle={`Search Results for: ${query}`} >
-          <h2>Search Situation</h2>
+        <Main hasSidebar hasHeader headerTitle={`Search Results for: ${query}`} isBlog >
+          <Results />
         </Main>
       </div>
     )

@@ -20,7 +20,7 @@ class Home extends React.Component {
       <div>
         <Head title={title} />
         <Hero title={title} description={description} hasimage frontPage />
-        <Main hasSidebar hasHeader headerTitle='Posts'>
+        <Main isBlog hasSidebar hasHeader headerTitle='Posts'>
           <Posts />
         </Main>
       </div>

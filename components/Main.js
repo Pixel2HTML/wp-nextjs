@@ -22,6 +22,7 @@ export default class Main extends React.Component {
   render () {
     let siteContent = 'site-content-contain'
     if (this.props.hasSidebar) siteContent += ' has-sidebar'
+    if (this.props.isBlog) siteContent += ' blog'
 
     return (
       <div className={siteContent}>
