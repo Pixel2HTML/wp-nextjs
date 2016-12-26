@@ -1,10 +1,10 @@
 import { Component } from 'react'
-import { Site } from '../wp'
+import wp, { Site } from '../wp'
 import SearchPage from '../components/SearchPage'
 
 import { Provider } from 'react-redux'
 import { initStore, reducer } from '../redux'
-import { getSite } from '../redux/actions'
+import { getSite, receiveResults } from '../redux/actions'
 
 export default class extends Component {
   static async getInitialProps ({
@@ -15,8 +15,10 @@ export default class extends Component {
     const store = initStore(reducer, {}, isServer)
 
     const site = await Site.root()
+    const results = await wp.posts().search(s)
 
     store.dispatch(getSite(site))
+    store.dispatch(receiveResults(results))
 
     return {
       initialState: store.getState(),
