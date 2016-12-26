@@ -1,6 +1,6 @@
 'use strict'
 import React from 'react'
-import Search from './Search'
+import SearchWidget from './SearchWidget'
 import PostsWidget from './PostsWidget'
 import CommentsWidgetContainer from './CommentsWidgetContainer'
 import CategoriesWidgetContainer from './CategoriesWidgetContainer'
@@ -9,7 +9,7 @@ class Sidebar extends React.Component {
   render () {
     return (
       <div>
-        <Search />
+        <SearchWidget />
         <PostsWidget />
         <CommentsWidgetContainer />
         <CategoriesWidgetContainer />

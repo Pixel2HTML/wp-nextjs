@@ -9,18 +9,28 @@ const mapStoreToProps = store => {
   return {
     title: store.site.root.name,
     description: store.site.root.description,
-    query: store.search.query
+    query: store.search.query,
+    results: store.search.results
   }
 }
 
 class SearchPage extends Component {
+
+  checkTitle (query, results) {
+    if (results.length) {
+      return `Search Results for ${query}`
+    } else {
+      return 'Nothing Found'
+    }
+  }
+
   render () {
-    let {title, description, query} = this.props
+    let {title, description, query, results} = this.props
     return (
       <div>
         <Head title={title} />
         <Hero title={title} description={description} hasimage />
-        <Main hasSidebar hasHeader headerTitle={`Search Results for: ${query}`} isBlog >
+        <Main hasSidebar hasHeader headerTitle={this.checkTitle(query, results)} isBlog >
           <Results />
         </Main>
       </div>
