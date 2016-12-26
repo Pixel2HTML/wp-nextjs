@@ -10,7 +10,8 @@ import {
   RECEIVE_POST,
   RECEIVE_AUTHOR,
   REQUEST_POST_COMMENTS,
-  RECEIVE_POST_COMMENTS
+  RECEIVE_POST_COMMENTS,
+  RECEIVE_RESULTS
 } from './actions'
 
 import { preventDuplicatePosts } from './helpers'
@@ -25,6 +26,19 @@ function site (state = {}, action) {
     case GET_SITE:
       return Object.assign({}, state, {
         root: action.site
+      })
+    default: return state
+  }
+}
+
+/**
+ * Get or update the results page from a source of truth
+ */
+function search (state = { results: [] }, action) {
+  switch (action.type) {
+    case RECEIVE_RESULTS:
+      return Object.assign({}, state, {
+        results: action.results
       })
     default: return state
   }
@@ -147,6 +161,7 @@ function post (state = {
  */
 export default combineReducers({
   site,
+  search,
   categories,
   comments,
   posts,

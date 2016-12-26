@@ -9,6 +9,7 @@ export const RECEIVE_POST = 'RECEIVE_POST'
 export const RECEIVE_AUTHOR = 'RECEIVE_AUTHOR'
 export const REQUEST_POST_COMMENTS = 'REQUEST_POST_COMMENTS'
 export const RECEIVE_POST_COMMENTS = 'RECEIVE_POST_COMMENTS'
+export const RECEIVE_RESULTS = 'RECEIVE_RESULTS'
 
 /**
  *  Fetch the root site info
@@ -122,5 +123,15 @@ export function receivePostComments (comments) {
       comments,
       total: 0
     }
+  }
+}
+
+/**
+ * Receive results from a source of truth
+ */
+export function receiveResults (results) {
+  return {
+    type: RECEIVE_RESULTS,
+    results
   }
 }
