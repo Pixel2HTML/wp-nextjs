@@ -11,7 +11,8 @@ import {
   RECEIVE_AUTHOR,
   REQUEST_POST_COMMENTS,
   RECEIVE_POST_COMMENTS,
-  RECEIVE_RESULTS
+  RECEIVE_RESULTS,
+  RECEIVE_SEARCH_QUERY
 } from './actions'
 
 import { preventDuplicatePosts } from './helpers'
@@ -39,6 +40,10 @@ function search (state = { results: [] }, action) {
     case RECEIVE_RESULTS:
       return Object.assign({}, state, {
         results: action.results
+      })
+    case RECEIVE_SEARCH_QUERY:
+      return Object.assign({}, state, {
+        query: action.query
       })
     default: return state
   }

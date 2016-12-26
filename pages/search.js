@@ -4,7 +4,7 @@ import SearchPage from '../components/SearchPage'
 
 import { Provider } from 'react-redux'
 import { initStore, reducer } from '../redux'
-import { getSite, receiveResults } from '../redux/actions'
+import { getSite, receiveResults, receiveSearchQuery } from '../redux/actions'
 
 export default class extends Component {
   static async getInitialProps ({
@@ -19,6 +19,7 @@ export default class extends Component {
 
     store.dispatch(getSite(site))
     store.dispatch(receiveResults(results))
+    store.dispatch(receiveSearchQuery(s))
 
     return {
       initialState: store.getState(),

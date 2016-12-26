@@ -18,7 +18,7 @@ class SearchPage extends Component {
       <div>
         <Head title={title} />
         <Hero title={title} description={description} hasimage />
-        <Main hasSidebar>
+        <Main hasSidebar hasHeader headerTitle='Search Results for: ' >
           <h2>Search Situation</h2>
         </Main>
       </div>

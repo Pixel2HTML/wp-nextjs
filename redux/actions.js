@@ -10,6 +10,7 @@ export const RECEIVE_AUTHOR = 'RECEIVE_AUTHOR'
 export const REQUEST_POST_COMMENTS = 'REQUEST_POST_COMMENTS'
 export const RECEIVE_POST_COMMENTS = 'RECEIVE_POST_COMMENTS'
 export const RECEIVE_RESULTS = 'RECEIVE_RESULTS'
+export const RECEIVE_SEARCH_QUERY = 'RECEIVE_SEARCH_QUERY'
 
 /**
  *  Fetch the root site info
@@ -133,5 +134,16 @@ export function receiveResults (results) {
   return {
     type: RECEIVE_RESULTS,
     results
+  }
+}
+
+/**
+ * Receive the search query to show on the frontend
+ */
+
+export function receiveSearchQuery (query) {
+  return {
+    type: RECEIVE_SEARCH_QUERY,
+    query
   }
 }
