@@ -1,4 +1,3 @@
-'use strict'
 import React from 'react'
 import SearchWidget from './SearchWidget'
 import PostsWidget from './PostsWidget'
