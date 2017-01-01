@@ -3,5 +3,5 @@
 name: nextjs
 root: ~/git/nextjs
 windows:
-  - editor: vim .
+  - editor: vim
   - server: yarn run dev
